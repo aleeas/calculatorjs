@@ -1,0 +1,158 @@
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<div class="container">
+<div class="calcContainer">
+    <h2>Calculator</h2>
+    <form name="form1" action="#">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="check[]" onclick="if(this.checked){ceksatu()}">
+                    </span>
+                    <input type="text" class="form-control" name="nilai[]">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="check[]" onclick="if(this.checked){ceksatu()}">
+                    </span>
+                    <input type="text" class="form-control" name="nilai[]">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" name="check[]" onclick="if(this.checked){ceksatu()}">
+                    </span>
+                    <input type="text" class="form-control" name="nilai[]">
+                </div>
+            </div>    
+        <hr>
+        <div class="text-center">
+            <input type="button" value="+" onClick="tambah()" class="btn btn-default">
+            <input type="button" value="-" onClick="kurang()" class="btn btn-default">
+            <input type="button" value="x" onClick="kali()" class="btn btn-default">
+            <input type="button" value="/" onClick="bagi()" class="btn btn-default">
+            <input type="button" value="CLEAR" onClick="resetForm()" class="btn btn-default"/>
+        </div>
+        <hr>
+    
+        <p>Result : <input type="text" name="hasil" disabled="true" class="form-control"/></p>
+
+    </form>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+
+	function tambah(){ 
+		var myForm = document.form1;
+		var nilai = myForm.elements['nilai[]'];
+		var check = myForm.elements['check[]'];
+		var data = [];
+		
+		for (var x = 0; x < nilai.length; x++) {
+		   if(check[x].checked) {
+			data.push(eval(nilai[x].value));
+		   }
+		   
+		} 
+	   
+		for (var y = 0, z = 0; y < data.length; z += data[y++]) {
+		 if(data.length == 1){
+		   alert('error');
+		   return (false);
+		 }
+		}
+		
+		myForm.hasil.value = z;
+	}
+	
+	function kurang(){ 
+		var myForm = document.form1;
+		var nilai = myForm.elements['nilai[]'];
+		var check = myForm.elements['check[]'];
+		var data = [];
+		
+		for (var x = 0; x < nilai.length; x++) {
+		   if(check[x].checked) {
+			data.push(eval(nilai[x].value));
+		   }
+		   
+		} 
+		var result = data.reduce((a, x) => a - x);
+		
+		for (var y = 0, z = 0; y < data.length; z += data[y++]) {
+		 if(data.length == 1){
+		   alert('error');
+		   return (false);
+		 }
+		}
+		
+		myForm.hasil.value = result;
+	}
+	
+	function kali(){ 
+		var myForm = document.form1;
+		var nilai = myForm.elements['nilai[]'];
+		var check = myForm.elements['check[]'];
+		var data = [];
+		
+		for (var x = 0; x < nilai.length; x++) {
+		   if(check[x].checked) {
+			data.push(eval(nilai[x].value));
+		   }
+		   
+		} 
+		var result = data.reduce((a, x) => a * x);
+		
+		for (var y = 0, z = 0; y < data.length; z += data[y++]) {
+		 if(data.length == 1){
+		   alert('error');
+		   return (false);
+		 }
+		}
+		
+		myForm.hasil.value = result;
+	}
+	
+	function bagi(){ 
+		var myForm = document.form1;
+		var nilai = myForm.elements['nilai[]'];
+		var check = myForm.elements['check[]'];
+		var data = [];
+		
+		for (var x = 0; x < nilai.length; x++) {
+		   if(check[x].checked) {
+			data.push(eval(nilai[x].value));
+		   }
+		   
+		} 
+		var result = data.reduce((a, x) => a / x);
+		
+		for (var y = 0, z = 0; y < data.length; z += data[y++]) {
+		 if(data.length == 1){
+		   alert('error');
+		   return (false);
+		 }
+		}
+		
+		myForm.hasil.value = result;
+	}
+   
+	function resetForm(){
+	    document.form1.reset();
+	}
+   
+   
+   </script>
+</body>
+</html>
